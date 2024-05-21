@@ -1,0 +1,7 @@
+#dropdownDots {
+    position: absolute;
+    color: white;
+    background: #212121DD;
+    backdrop-filter: blur(10px);
+    box-shadow: 0.25rem .5rem .125rem rgb(16,16,16,0.612);
+}
