@@ -7,6 +7,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavAsideComponent } from './components/nav-aside/nav-aside.component';
 import { SearchComponent } from './components/search/search.component';
 import { ButtonWritterComponent } from './components/button-writter/button-writter.component';
+import { SideMenuCardComponent } from './components/side-menu-card/side-menu-card.component';
+import { ItemMenuCardComponent } from './components/item-menu-card/item-menu-card.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { ButtonWritterComponent } from './components/button-writter/button-writt
     NavAsideComponent,
     SearchComponent,
     ButtonWritterComponent,
+    SideMenuCardComponent,
+    ItemMenuCardComponent,
   ],
   imports: [
     CommonModule,
