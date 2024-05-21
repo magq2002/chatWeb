@@ -1,12 +1,12 @@
-
-
 <div class="w-full max-w-md text-white">
 
-   <div class="flow-root">
-        <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
-            @for ( user of users; track user.id){
-                <shared-item-menu-card [user]="user"></shared-item-menu-card>
+    <div class="flow-root">
+        <ul role="list">
+            @for ( user of users; track user.id) {
+            <li class="m-2 hover:bg-[#8774E1] hover:text-white rounded-lg p-1">
+            <shared-item-menu-card [user]="user"></shared-item-menu-card>
+            </li>
             }
         </ul>
-   </div>
+    </div>
 </div>

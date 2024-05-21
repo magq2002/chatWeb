@@ -4,4 +4,5 @@ export interface Chats {
     message: string;
     date: string;
     number: number;
+    avatar: string;
 }
