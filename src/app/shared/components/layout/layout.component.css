@@ -1,9 +1,12 @@
 #app {
     display: grid;
     grid-template-areas: 
-        "aside main main";
+        "aside nav nav"
+        "aside main main"
+        "aside controls controls";
         grid-template-columns: 350px 1fr;
-        grid-template-rows: 1fr auto;
+        grid-template-rows: 56px 1fr auto;
+        height: 100vh;
 }
 
 .bg-chat {
@@ -12,4 +15,9 @@
     background-size: 510px auto;
     background-repeat: repeat;
     border-left: 1px solid rgb(48,48,48);
+}
+
+footer {
+    left: 50%;
+    transform: translateX(-50%);
 }
