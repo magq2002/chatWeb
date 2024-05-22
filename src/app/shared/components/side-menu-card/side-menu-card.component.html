@@ -3,7 +3,7 @@
     <div class="flow-root">
         <ul role="list">
             @for ( user of users; track user.id) {
-            <li class="m-1 hover:bg-zinc-700 hover:text-white rounded-lg p-1.5">
+            <li class="m-1 hover:bg-zinc-700 transition duration-200 hover:text-white rounded-lg p-1.5">
             <shared-item-menu-card [user]="user"></shared-item-menu-card>
             </li>
             }
