@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+activeMic:boolean =false;
+
+toggleMic(){
+  this.activeMic = !this.activeMic;
+}
+
 }
