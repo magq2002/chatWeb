@@ -9,6 +9,7 @@ import { SearchComponent } from './components/search/search.component';
 import { ButtonWritterComponent } from './components/button-writter/button-writter.component';
 import { SideMenuCardComponent } from './components/side-menu-card/side-menu-card.component';
 import { ItemMenuCardComponent } from './components/item-menu-card/item-menu-card.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ItemMenuCardComponent } from './components/item-menu-card/item-menu-car
     ButtonWritterComponent,
     SideMenuCardComponent,
     ItemMenuCardComponent,
+    NavbarComponent,
   ],
   imports: [
     CommonModule,
