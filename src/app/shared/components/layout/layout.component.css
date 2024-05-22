@@ -4,15 +4,15 @@
         "aside nav nav"
         "aside main main"
         "aside controls controls";
-        grid-template-columns: 350px 1fr;
+        grid-template-columns: minmax(auto, 350px) 1fr;
         grid-template-rows: 70px 1fr auto;
         height: 100vh;
 }
 
 .bg-chat {
-    background-image: url('/assets/chat-bg-light.png');
+    background-image: url('/assets/pattern.svg');
     background-position: top right;
-    background-size: 510px auto;
+    background-size: 370px auto;
     background-repeat: repeat;
     border-left: 1px solid rgb(48,48,48);
 }
