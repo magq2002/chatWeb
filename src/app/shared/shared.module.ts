@@ -10,6 +10,7 @@ import { ButtonWritterComponent } from './components/button-writter/button-writt
 import { SideMenuCardComponent } from './components/side-menu-card/side-menu-card.component';
 import { ItemMenuCardComponent } from './components/item-menu-card/item-menu-card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ChatsModule } from '../chats/chats.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   ],
   imports: [
     CommonModule,
+    ChatsModule,
   ],
   exports: [
     LayoutComponent,
