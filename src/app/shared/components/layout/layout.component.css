@@ -5,7 +5,7 @@
         "aside main main"
         "aside controls controls";
         grid-template-columns: 350px 1fr;
-        grid-template-rows: 56px 1fr auto;
+        grid-template-rows: 70px 1fr auto;
         height: 100vh;
 }
 
