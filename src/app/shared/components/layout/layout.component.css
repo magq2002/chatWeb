@@ -4,7 +4,7 @@
         "aside nav nav"
         "aside main main"
         "aside controls controls";
-        grid-template-columns: 350px 1fr;
+        grid-template-columns: minmax(auto, 350px) 1fr;
         grid-template-rows: 70px 1fr auto;
         height: 100vh;
 }
