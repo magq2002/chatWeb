@@ -52,7 +52,7 @@ export class AudioRecordingService {
     if (this.stream) {
       this.recorder = new recordRTC.StereoAudioRecorder(this.stream, {
         type: 'audio',
-        mimeType: 'audio/webm'
+        mimeType: 'audio/wav'
       });
 
       this.recorder.record();
