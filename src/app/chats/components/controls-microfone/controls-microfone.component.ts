@@ -43,11 +43,15 @@ export class ControlsMicrofoneComponent {
   }
 
   sendAudio() {
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(this.recorderBlob.blob);
-    link.download = this.recorderBlob.title;
-    link.click();
-    link.remove();
+    this.stopRecording();
+    setTimeout(() => {
+      this.audioRecordingService.sendAudio(this.recorderBlob)
+      // const link = document.createElement('a');
+      // link.href = URL.createObjectURL(this.recorderBlob.blob);
+      // link.download = this.recorderBlob.title;
+      // link.click();
+      // link.remove();
+    },20);
   }
 
   ngOnDestroy(): void {

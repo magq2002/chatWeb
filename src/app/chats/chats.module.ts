@@ -7,7 +7,6 @@ import { MicrofoneComponent } from './components/microfone/microfone.component';
 import { ControlsMicrofoneComponent } from './components/controls-microfone/controls-microfone.component';
 
 
-
 @NgModule({
   declarations: [
     MessageComponent,
@@ -17,7 +16,7 @@ import { ControlsMicrofoneComponent } from './components/controls-microfone/cont
     ControlsMicrofoneComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
     ChatBotComponent,
