@@ -1,4 +1,4 @@
-import { Component, OnDestroy, inject } from '@angular/core';
+import { Component, OnDestroy, effect, inject } from '@angular/core';
 import { AudioRecordingService, RecorderBlob } from '../../services/audio-recording.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -7,29 +7,16 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './microfone.component.html',
   styleUrl: './microfone.component.css',
 })
-export class MicrofoneComponent implements OnDestroy {
-
-  blobUrl: any;
-  isRecording = false;
-  startTime = '0:00'
-  private recorderBlob!: RecorderBlob;
+export class MicrofoneComponent {
 
   private audioRecordingService = inject( AudioRecordingService );
 
-  constructor(
-    private readonly sanitizer: DomSanitizer
-  ) {
-    this.getRecordedBlob();
-    this.audioRecordingService.getrecordingTime().subscribe( val => this.startTime = val);
-    this.audioRecordingService.getrecordedFailed().subscribe( () => this.isRecording = false);
-  }
 
-  private getRecordedBlob() {
-    this.audioRecordingService.getRecordedBlob().subscribe(data => {
-      this.blobUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data.blob));
-      this.recorderBlob = data;
-    });
-  }
+  isRecording = this.audioRecordingService.getIsRecording();
+
+  public recording = effect(() => {
+    this.isRecording = this.audioRecordingService.getIsRecording();
+  })
 
   activeMic: boolean = false;
 
@@ -39,34 +26,8 @@ export class MicrofoneComponent implements OnDestroy {
 
   startRecording() {
     if ( !this.isRecording ) {
-      this.isRecording = true;
       this.audioRecordingService.startRecording();
     }
   }
 
-  stopRecording() {
-    if ( !this.isRecording ) {
-      this.isRecording = false;
-      this.audioRecordingService.stopRecording();
-    }
-  }
-
-  clearBlobData() {
-    this.blobUrl = null;
-  }
-
-  sendAudio() {
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(this.recorderBlob.blob);
-    link.download = this.recorderBlob.title;
-    link.click();
-    link.remove();
-  }
-
-  ngOnDestroy(): void {
-    if( this.isRecording ) {
-      this.isRecording = false;
-      this.audioRecordingService.abortRecording();
-    }
-  }
 }

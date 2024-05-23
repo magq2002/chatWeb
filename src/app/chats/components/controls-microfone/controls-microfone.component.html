@@ -1,6 +1,7 @@
 <div class="flex gap-2">
   <button
     class="w-14 h-14 rounded-full bg-[#8774E1] flex items-center justify-center text-white"
+    (click)="stopRecording()"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18,6 +19,7 @@
 
   <button
     class="w-14 h-14 rounded-full bg-[#8774E1] flex items-center justify-center text-white"
+    (click)="clearBlobData()"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -37,6 +39,7 @@
 
   <button
     class="w-14 h-14 rounded-full bg-[#8774E1] flex items-center justify-center text-white"
+    (click)="sendAudio()"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import * as recordRTC from 'recordrtc'
 
@@ -12,6 +12,8 @@ export interface RecorderBlob {
 })
 export class AudioRecordingService {
 
+  private isRecording = signal<boolean>(false);
+
   private recorder: any;
   private startTime = 0;
   private interval = 0;
@@ -21,8 +23,16 @@ export class AudioRecordingService {
   private recordingTime = new Subject<string>();
   private recordedFailed = new Subject<string>();
 
+  
+
+  getIsRecording(): boolean {
+    return this.isRecording();
+  }
+
   startRecording() {
     if (!this.recorder) {
+      this.isRecording.set(true);
+      console.log(this.isRecording())
       this.recordingTime.next('0:00');
       navigator.mediaDevices.getUserMedia({audio: true})
       .then(stream => {
@@ -86,6 +96,7 @@ export class AudioRecordingService {
   }
 
   abortRecording() {
+    this.isRecording.set(false);
     this.stopMedia()
   }
 
@@ -98,6 +109,7 @@ export class AudioRecordingService {
   }
 
   getrecordedFailed(): Observable<string> {
+    this.isRecording.set(false);
     return this.recordedFailed.asObservable();
   }
 
