@@ -77,7 +77,7 @@ export class AudioRecordingService {
   stopRecording() {
     if ( this.recorder ) {
       this.recorder.stop((blob: Blob) => {
-        const title = encodeURIComponent('audio' + new Date().getTime + '.mp3');
+        const title = encodeURIComponent('audio' + new Date().getTime() + '.mp3');
         this.recordedBlob.next({ blob, title });
         this.stopMedia();
       }, () => {
