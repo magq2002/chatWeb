@@ -118,12 +118,20 @@ export class AudioRecordingService {
     return this.recordedFailed.asObservable();
   }
 
-  sendAudio( recorderBlob : RecorderBlob ) {
-    const url = `${this.baseUrl}/chatbot`;
+  // sendAudio( recorderBlob : RecorderBlob ) {
+  //   const url = `${this.baseUrl}/upload`;
+  //   const formData = new FormData();
+  //   formData.append('file', recorderBlob.blob, recorderBlob.title);
+    
+  //   return this.http.post(url, formData)
+  // }
+
+  sendAudio(recorderBlob: RecorderBlob): Observable<any> {
+    const url = `${this.baseUrl}/upload`;
     const formData = new FormData();
     formData.append('file', recorderBlob.blob, recorderBlob.title);
     
-    return this.http.post(url, formData)
+    return this.http.post(url, formData);
   }
 
 }
