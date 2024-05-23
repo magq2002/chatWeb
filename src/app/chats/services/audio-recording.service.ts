@@ -1,6 +1,8 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import * as recordRTC from 'recordrtc'
+import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 export interface RecorderBlob {
   blob: Blob,
@@ -12,6 +14,9 @@ export interface RecorderBlob {
 })
 export class AudioRecordingService {
 
+  private http = inject( HttpClient );
+
+  private readonly baseUrl: string = environment.baseUrl;
   private isRecording = signal<boolean>(false);
 
   private recorder: any;
@@ -113,5 +118,12 @@ export class AudioRecordingService {
     return this.recordedFailed.asObservable();
   }
 
+  sendAudio( recorderBlob : RecorderBlob ) {
+    const url = `${this.baseUrl}/chatbot`;
+    const formData = new FormData();
+    formData.append('file', recorderBlob.blob, recorderBlob.title);
+    
+    return this.http.post(url, formData)
+  }
 
 }
