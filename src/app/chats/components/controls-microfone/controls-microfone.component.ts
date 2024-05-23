@@ -45,17 +45,15 @@ export class ControlsMicrofoneComponent {
   sendAudio() {
     this.stopRecording();
     setTimeout(() => {
-      this.audioRecordingService.sendAudio(this.recorderBlob).subscribe({
-        next: (data) => {
-
+      this.audioRecordingService.sendAudio(this.recorderBlob).subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.error(error);
         }
-      })
-      // const link = document.createElement('a');
-      // link.href = URL.createObjectURL(this.recorderBlob.blob);
-      // link.download = this.recorderBlob.title;
-      // link.click();
-      // link.remove();
-    },200);
+      );
+    }, 200);
   }
 
   ngOnDestroy(): void {
