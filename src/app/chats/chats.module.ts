@@ -5,6 +5,7 @@ import { ChatBotComponent } from './components/chat-bot/chat-bot.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MicrofoneComponent } from './components/microfone/microfone.component';
 import { ControlsMicrofoneComponent } from './components/controls-microfone/controls-microfone.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ControlsMicrofoneComponent } from './components/controls-microfone/cont
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
   ],
   exports: [
     ChatBotComponent,

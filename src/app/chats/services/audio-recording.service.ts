@@ -18,6 +18,7 @@ export class AudioRecordingService {
 
   private readonly baseUrl: string = environment.baseUrl;
   private isRecording = signal<boolean>(false);
+  private isMessage = signal<boolean>(false);
 
   private recorder: any;
   private startTime = 0;
@@ -32,6 +33,14 @@ export class AudioRecordingService {
 
   getIsRecording(): boolean {
     return this.isRecording();
+  }
+
+  getIsMessage(): boolean {
+    return this.isMessage();
+  }
+
+  setIsMessage(value: boolean): void {
+    this.isMessage.set(value);
   }
 
   startRecording() {
