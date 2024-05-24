@@ -9,4 +9,6 @@ import { Chats } from '../../interfaces/chats';
 export class ItemMenuCardComponent {
 
   @Input() user?: Chats;
+
+  @Input() color?: boolean;
 }
