@@ -1,19 +1,50 @@
 <div class="flex items-center">
+
     <div class="flex-shrink-0">
         <img class="w-14 h-14 rounded-full" src="{{ user?.avatar }}" alt="Neil image">
     </div>
+
+    @if (color){
+
     <div class="flex-1 min-w-0 ms-4">
+
+        <p class="text-sm font-bold text-white truncate dark:text-white">
+            {{ user?.name }}
+        </p>
+
+        <p class="text-sm text-white truncate dark:text-gray-400">
+            {{ user?.message }}
+        </p>
+        </div>
+
+        <div class="flex-col inline-flex items-end text-base font-semibold text-gray-900 dark:text-white">
+            <p class="text-xs text-white">{{ user?.date }}</p>
+            <button class="w-5 h-5 mt-1 bg-white rounded-full text-purple-500 text-sm">
+                {{ user?.number}}
+            </button>
+        </div>
+
+    } @else {
+
+    <div class="flex-1 min-w-0 ms-4">
+
         <p class="text-sm font-medium text-white truncate dark:text-white">
             {{ user?.name }}
         </p>
+
         <p class="text-sm text-gray-500 truncate dark:text-gray-400">
             {{ user?.message }}
         </p>
+
     </div>
+
     <div class="flex-col inline-flex items-end text-base font-semibold text-gray-900 dark:text-white">
         <p class="text-xs text-[#717579]">{{ user?.date }}</p>
         <button class="w-5 h-5 mt-1 bg-purple-500 rounded-full text-white text-sm">
             {{ user?.number}}
         </button>
     </div>
+
+    }
+
 </div>
