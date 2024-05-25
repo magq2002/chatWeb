@@ -36,7 +36,9 @@ export class FooterComponent {
   }
 
   sendMessage() {
-    this.messageService.sendMessage(this.message, 1).subscribe();
+    this.messageService.sendMessage(this.message, 1).subscribe( (value) => {
+    });
+    this.message="";
   }
 
 }
