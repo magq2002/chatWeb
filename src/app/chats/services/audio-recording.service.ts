@@ -46,7 +46,6 @@ export class AudioRecordingService {
   startRecording() {
     if (!this.recorder) {
       this.isRecording.set(true);
-      console.log(this.isRecording())
       this.recordingTime.next('0:00');
       navigator.mediaDevices.getUserMedia({audio: true})
       .then(stream => {
