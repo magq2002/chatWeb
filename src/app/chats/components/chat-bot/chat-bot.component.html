@@ -1,8 +1,15 @@
 <div class="w-full h-full z-50">
     <div class="mx-20">
         <div class="mx-20 px-4 pt-4">
-            @for ( message of messages; track message.id ){
-                <chats-message></chats-message>
+            @for ( message of messages; track message._id ){
+
+                <div class="my-5">
+                @if (message?.is_audio == true) {
+                        <chats-message [audioName]="message?.name_audio"></chats-message>
+                    }@else {
+                        <!-- TODO: Componente mensaje -->
+                    }
+                </div>
             }
         </div>
     </div>
