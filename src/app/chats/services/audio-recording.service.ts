@@ -86,7 +86,7 @@ export class AudioRecordingService {
   stopRecording() {
     if ( this.recorder ) {
       this.recorder.stop((blob: Blob) => {
-        const title = encodeURIComponent('audio' + new Date().getTime() + '.mp3');
+        const title = encodeURIComponent('audio' + new Date().getTime() + '.wav');
         this.recordedBlob.next({ blob, title });
         this.stopMedia();
       }, () => {
@@ -136,9 +136,9 @@ export class AudioRecordingService {
   // }
 
   sendAudio(recorderBlob: RecorderBlob): Observable<any> {
-    const url = `${this.baseUrl}/upload`;
+    const url = `${this.baseUrl}/voice_messages/`;
     const formData = new FormData();
-    formData.append('file', recorderBlob.blob, recorderBlob.title);
+    formData.append('audio', recorderBlob.blob, recorderBlob.title);
     
     return this.http.post(url, formData);
   }

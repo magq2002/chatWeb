@@ -25,7 +25,7 @@ export class MessageService {
     };
     return this.http.post<Message>(`${this.baseUrl}/sendMessage`, payload)
     .pipe(
-      map ( ({id}) => this.newMessages.set(id)),
+      map ( ({_id}) => this.newMessages.set(_id)),
       catchError( err => throwError( () => err.error.message ))
     );
   }
@@ -35,7 +35,7 @@ export class MessageService {
   }
 
   getAllMessages(): Observable<any> {
-    return this.http.get(`${ this.baseUrl }/getAllMessages`);
+    return this.http.get(`${ this.baseUrl }/messages/`);
   }
 
 }
