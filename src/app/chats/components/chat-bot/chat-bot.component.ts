@@ -1,6 +1,6 @@
 import { Component, effect, inject } from '@angular/core';
 import { MessageService } from '../../services/message.service';
-import { Message, VoiceMessage } from '../../interfaces';
+import { Message } from '../../interfaces';
 
 @Component({
   selector: 'chats-chat-bot',
@@ -9,8 +9,11 @@ import { Message, VoiceMessage } from '../../interfaces';
 })
 export class ChatBotComponent {
 
-  messages: Message[] = [];
-  voiceMessage: VoiceMessage[] = [];
+  messages: Message[] = [
+    // {id: 1, is_audio: true, message:"hola", user: 1},
+    // {id: 2, is_audio: false, message:"que", user: 2},
+    // {id: 3, is_audio: true, message:"mas", user: 1}
+  ];
 
   constructor(){
     this.getAllMessages();
@@ -19,7 +22,7 @@ export class ChatBotComponent {
   private messageService = inject( MessageService );
 
   public getMessages = effect(() => {
-    this.getMessage(this.messageService.getNewMessages());
+    // this.getMessage(this.messageService.getNewMessages());
   })
 
   public getMessage(id: number) {
@@ -31,8 +34,8 @@ export class ChatBotComponent {
 
   public getAllMessages() {
     this.messageService.getAllMessages().subscribe((data) => {
-      this.messages.push(data);
       console.log(data);
+      this.messages.push(...data);
     })
   }
 

@@ -1,7 +1,10 @@
 
 
 export interface Message {
-    id: number;
+    _id: number;
+    text?: string;
     user: number;
-    message: string;
+    is_audio: boolean;
+    name_audio?: string;
+    timestap: Date;
 }
