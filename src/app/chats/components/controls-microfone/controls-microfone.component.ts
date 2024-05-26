@@ -47,10 +47,10 @@ export class ControlsMicrofoneComponent {
     setTimeout(() => {
       this.audioRecordingService.sendAudio(this.recorderBlob).subscribe(
         response => {
-          console.log(response);
+
         },
         error => {
-          console.error(error);
+
         }
       );
     }, 200);

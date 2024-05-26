@@ -14,16 +14,21 @@ export class MessageService {
   private readonly baseUrl: string = environment.baseUrl;
   private newMessages = signal<number>(0);
 
+
   getNewMessages() {
     return this.newMessages();
   }
 
+  setNewMessages(_id: number) {
+    this.newMessages.set(_id);
+  }
+
   sendMessage(message: string, user: number): Observable<any> {
     const payload = {
-      message: message,
+      text: message,
       user: user
     };
-    return this.http.post<Message>(`${this.baseUrl}/sendMessage`, payload)
+    return this.http.post<Message>(`${this.baseUrl}/messages`, payload)
     .pipe(
       map ( ({_id}) => this.newMessages.set(_id)),
       catchError( err => throwError( () => err.error.message ))
@@ -31,7 +36,7 @@ export class MessageService {
   }
 
   getMessage(id: number): Observable<any> {
-    return this.http.get(`${ this.baseUrl }/getMessage/${id}`);
+    return this.http.get(`${ this.baseUrl }/messages/${id}`);
   }
 
   getAllMessages(): Observable<any> {

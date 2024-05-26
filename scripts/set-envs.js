@@ -8,7 +8,7 @@ const targetPath = './src/environments/environment.ts';
 const envFileContent = `
 export const environment = {
     baseUrl: "${ process.env['BASEURL'] }",
-    audiosUrl: "${ process.env['AUDIOSURL']},
+    audiosUrl: "${ process.env['AUDIOSURL']}",
 };
 `;
 

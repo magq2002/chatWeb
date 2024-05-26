@@ -6,6 +6,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MicrofoneComponent } from './components/microfone/microfone.component';
 import { ControlsMicrofoneComponent } from './components/controls-microfone/controls-microfone.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TextMessageComponent } from './components/text-message/text-message.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     MicrofoneComponent,
     ControlsMicrofoneComponent,
+    TextMessageComponent,
   ],
   imports: [
     CommonModule,

@@ -1,8 +1,10 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, map, tap } from 'rxjs';
 import * as recordRTC from 'recordrtc'
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { MessageService } from './message.service';
+import { Message } from '../interfaces';
 
 export interface RecorderBlob {
   blob: Blob,
@@ -19,6 +21,7 @@ export class AudioRecordingService {
   private readonly baseUrl: string = environment.baseUrl;
   private isRecording = signal<boolean>(false);
   private isMessage = signal<boolean>(false);
+  private messageService = inject( MessageService );
 
   private recorder: any;
   private startTime = 0;
@@ -46,7 +49,6 @@ export class AudioRecordingService {
   startRecording() {
     if (!this.recorder) {
       this.isRecording.set(true);
-      console.log(this.isRecording())
       this.recordingTime.next('0:00');
       navigator.mediaDevices.getUserMedia({audio: true})
       .then(stream => {
@@ -139,8 +141,13 @@ export class AudioRecordingService {
     const url = `${this.baseUrl}/voice_messages/`;
     const formData = new FormData();
     formData.append('audio', recorderBlob.blob, recorderBlob.title);
+    formData.append('user', '1');
     
-    return this.http.post(url, formData);
+    return this.http.post<Message>(url, formData)
+    .pipe(
+      map(({_id}) => this.messageService.setNewMessages(_id)),
+      tap(() => this.isRecording.set(false)),
+    );
   }
 
 }
