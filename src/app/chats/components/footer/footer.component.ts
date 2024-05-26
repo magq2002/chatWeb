@@ -39,6 +39,7 @@ export class FooterComponent {
     this.messageService.sendMessage(this.message, 1).subscribe( (value) => {
     });
     this.message="";
+    this.audioRecordingService.setIsMessage(false);
   }
 
 }
