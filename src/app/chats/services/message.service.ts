@@ -19,6 +19,10 @@ export class MessageService {
     return this.newMessages();
   }
 
+  setNewMessages(_id: number) {
+    this.newMessages.set(_id);
+  }
+
   sendMessage(message: string, user: number): Observable<any> {
     const payload = {
       text: message,

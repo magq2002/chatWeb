@@ -1,13 +1,13 @@
 <div class="w-full h-full z-50">
     <div class="mx-20 relative">
-        <div class="mx-20 px-4 pt-4" >
+        <div class="mx-20 px-4 pt-4 pb-16" >
             @for ( message of messages; track message._id ){
 
                 <div class="my-5">
                 @if (message?.is_audio == true) {
-                        <chats-message [audioName]="message?.name_audio"></chats-message>
+                        <chats-message [message]="message"></chats-message>
                     }@else {
-                        <chats-text-message [text]="message?.text"></chats-text-message>
+                        <chats-text-message [message]="message"></chats-text-message>
                     }
                 </div>
             }

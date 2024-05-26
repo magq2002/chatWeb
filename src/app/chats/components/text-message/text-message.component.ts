@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Message } from '../../interfaces';
 
 @Component({
   selector: 'chats-text-message',
@@ -6,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class TextMessageComponent {
 
-  @Input() text?: string;
+  @Input() message?: Message;
 }
