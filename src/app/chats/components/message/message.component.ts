@@ -1,5 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { environment } from '../../../../environments/environment';
+import { Message } from '../../interfaces';
 
 @Component({
   selector: 'chats-message',
@@ -11,10 +12,10 @@ export class MessageComponent {
   private readonly audiosUrl: string = environment.audiosUrl;
   isPlaying: boolean = false;
 
-  @Input() audioName?: string;
+  @Input() message?: Message;
 
   getAudioUlr(){
-    return `${this.audiosUrl}/${this.audioName}`
+    return `${this.audiosUrl}/${this.message?.name_audio}`
   }
 
   @ViewChild('audio') audioPlayer: any;

@@ -1,4 +1,4 @@
-<div class="flex items-start gap-2.5">
+<div class="flex items-start gap-2.5" [class]="message?.user !== 1 ? 'justify-start' : 'justify-end'">
     <img class="w-8 h-8 rounded-full" src="/assets/sport-bot.jpg" alt="Jese image">
     <div class="flex flex-col gap-1">
         <div class="flex items-center space-x-2 rtl:space-x-reverse">
