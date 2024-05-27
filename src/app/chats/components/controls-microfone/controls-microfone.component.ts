@@ -13,6 +13,7 @@ export class ControlsMicrofoneComponent {
   isRecording = this.audioRecordingService.getIsRecording();
   private recorderBlob!: RecorderBlob;
   blobUrl: any;
+  isLoading = false;
 
   public recording = effect(() => {
     this.isRecording = this.audioRecordingService.getIsRecording();
@@ -43,14 +44,15 @@ export class ControlsMicrofoneComponent {
   }
 
   sendAudio() {
+    this.isLoading = true;
     this.stopRecording();
     setTimeout(() => {
       this.audioRecordingService.sendAudio(this.recorderBlob).subscribe(
         response => {
-          console.log(response)
+          this.isLoading = false
         },
         error => {
-
+          this.isLoading = false
         }
       );
     }, 200);
