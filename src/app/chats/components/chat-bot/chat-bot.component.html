@@ -6,6 +6,7 @@
                 <div class="my-5">
                 @if (message?.is_audio == true) {
                         <chats-message [message]="message"></chats-message>
+                        <chats-text-message [message]="message"></chats-text-message>
                     }@else {
                         <chats-text-message [message]="message"></chats-text-message>
                     }
