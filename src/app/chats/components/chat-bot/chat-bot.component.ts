@@ -18,16 +18,19 @@ export class ChatBotComponent {
   private messageService = inject( MessageService );
 
   public getMessages = effect(() => {
-    if (this.messageService.getNewMessages() != 0 && this.messageService.getNewMessages() != undefined ){
+    if (this.messageService.getNewMessages().length > 0 && this.messageService.getNewMessages() != undefined ){
       this.getMessage(this.messageService.getNewMessages());
     }
   })
 
-  public getMessage(id: number) {
-    this.messageService.getMessage(id).subscribe((data) =>{
-      this.messages.push(data);
-    })
-  }
+  public getMessage(data: number[]) {
+    this.messageService.getMessage(data).subscribe(({message, messageChat }) => {
+        this.messages.push(message);
+        this.messages.push(messageChat);
+    }, (error) => {
+        console.error('Error fetching messages:', error);
+    });
+}
 
   public getAllMessages() {
     this.messageService.getAllMessages().subscribe((data) => {

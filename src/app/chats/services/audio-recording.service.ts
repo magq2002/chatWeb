@@ -32,7 +32,7 @@ export class AudioRecordingService {
   private recordingTime = new Subject<string>();
   private recordedFailed = new Subject<string>();
 
-  
+
 
   getIsRecording(): boolean {
     return this.isRecording();
@@ -145,7 +145,8 @@ export class AudioRecordingService {
     
     return this.http.post<Message>(url, formData)
     .pipe(
-      map(({_id}) => this.messageService.setNewMessages(_id)),
+      map(({_id, _idChat}) => 
+        this.messageService.setNewMessages([_id, _idChat])),
       tap(() => this.isRecording.set(false)),
     );
   }

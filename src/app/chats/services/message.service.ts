@@ -12,15 +12,15 @@ export class MessageService {
 
   private http = inject( HttpClient );
   private readonly baseUrl: string = environment.baseUrl;
-  private newMessages = signal<number>(0);
+  private newMessages = signal<number[]>([]);
 
 
   getNewMessages() {
     return this.newMessages();
   }
 
-  setNewMessages(_id: number) {
-    this.newMessages.set(_id);
+  setNewMessages(data: number[]) {
+    this.newMessages.set(data);
   }
 
   sendMessage(message: string, user: number): Observable<any> {
@@ -30,13 +30,14 @@ export class MessageService {
     };
     return this.http.post<Message>(`${this.baseUrl}/messages`, payload)
     .pipe(
-      map ( ({_id}) => this.newMessages.set(_id)),
+      map ( ({_id, _idChat}) => this.newMessages.set([_id, _idChat])),
       catchError( err => throwError( () => err.error.message ))
     );
   }
 
-  getMessage(id: number): Observable<any> {
-    return this.http.get(`${ this.baseUrl }/messages/${id}`);
+  getMessage(data: number[]): Observable<any> {
+    const [_id, _idChat] = data;
+    return this.http.get(`${this.baseUrl}/messages/${_id}/${_idChat}`);
   }
 
   getAllMessages(): Observable<any> {
