@@ -3,7 +3,7 @@
     @if (message?.user == 1) {
     <div class="flex flex-col gap-1 items-end">
         <div class="flex items-center space-x-2 rtl:space-x-reverse">
-            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">11:46</span>
+            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">{{message?.timestamp | date:'HH:mm' }}</span>
             <span class="text-sm font-semibold text-white">You</span>
         </div>
         <div
@@ -73,7 +73,7 @@
                     class="inline-flex self-center items-center p-2 text-sm font-medium text-white">{{audioDuration}}</span>
             </div>
         </div>
-        <span class="text-sm font-normal text-gray-500 dark:text-gray-400">Delivered</span>
+        <span class="text-sm font-normal text-gray-500 dark:text-gray-400 w-full max-w-[320px]">{{ message?.text }}</span>
     </div>
     <img class="w-8 h-8 rounded-full" src="/assets/robot.jpg" alt="Jese image">
 
@@ -83,7 +83,7 @@
     <div class="flex flex-col gap-1">
         <div class="flex items-center space-x-2 rtl:space-x-reverse">
             <span class="text-sm font-semibold text-white">Sport Chatbot</span>
-            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">11:46</span>
+            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ message?.timestamp | date:'HH:mm' }}</span>
         </div>
         <div
             class="flex flex-col w-full max-w-[320px] leading-1.5 p-4 border-gray-200 rounded-e-xl rounded-es-xl bg-[#212121]">
@@ -152,7 +152,7 @@
                     class="inline-flex self-center items-center p-2 text-sm font-medium text-white">{{audioDuration}}</span>
             </div>
         </div>
-        <span class="text-sm font-normal text-gray-500 dark:text-gray-400">Delivered</span>
+        <span class="text-sm font-normal text-gray-500 dark:text-gray-400 w-full max-w-[320px]">{{ message?.text }}</span>
     </div>
     }
 
