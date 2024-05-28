@@ -5,7 +5,7 @@
       <div class="flex flex-col gap-1 w-full max-w-[320px] items-end">
 
          <div class="flex items-center space-x-2 rtl">
-            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">11:46</span>
+            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ message?.timestamp | date:'HH:mm' }}</span>
             <span class="text-sm font-semibold text-white">You</span>
          </div>
 
@@ -25,7 +25,7 @@
       
       <div class="flex items-center space-x-2 rtl:space-x-reverse">
          <span class="text-sm font-semibold text-white">Sport Chatbot</span>
-         <span class="text-sm font-normal text-gray-500 dark:text-gray-400">11:46</span>
+         <span class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ message?.timestamp | date:'HH:mm' }}</span>
       </div>
       <div
          class="flex flex-col leading-1.5 p-4 border-gray-200 bg-[#212121] rounded-e-xl rounded-es-xl dark:bg-gray-700">

@@ -7,5 +7,5 @@ export interface Message {
     user: number;
     is_audio: boolean;
     name_audio?: string;
-    timestap: Date;
+    timestamp: Date;
 }
